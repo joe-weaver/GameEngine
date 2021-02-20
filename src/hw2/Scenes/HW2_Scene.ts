@@ -12,7 +12,7 @@ import RandUtils from "../../Wolfie2D/Utils/RandUtils";
 import AsteroidAI from "../AI/AsteroidAI";
 import BoidBehavior from "../AI/ShipAI";
 import FlockBehavior from "../AI/FlockBehavior";
-import { Homework1Animations, Homework1Event, Homework1Names, Homework1Shaders } from "../HW1_Enums";
+import { Homework2Animations, Homework2Event, Homework2Names, Homework2Shaders } from "../HW2_Enums";
 import SpaceshipPlayerController from "../AI/SpaceshipPlayerController";
 import Circle from "../../Wolfie2D/DataTypes/Shapes/Circle";
 import GameOver from "./GameOver";
@@ -66,7 +66,7 @@ export default class Homework1_Scene extends Scene {
 	private ASTEROID_SPEED: number = 100;
 	private ASTEROID_SPEED_INC: number = 10;
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/*
 		You'll want to be sure to load in your own sprite here
 	*/
@@ -121,10 +121,10 @@ export default class Homework1_Scene extends Scene {
 		AsteroidAI.SPEED = this.ASTEROID_SPEED;
 
 		// Subscribe to events
-		this.receiver.subscribe(Homework1Event.PLAYER_I_FRAMES_END);
-		this.receiver.subscribe(Homework1Event.PLAYER_DEAD);
-		this.receiver.subscribe(Homework1Event.SPAWN_FLEET);
-		this.receiver.subscribe(Homework1Event.SHIP_DEAD);
+		this.receiver.subscribe(Homework2Event.PLAYER_I_FRAMES_END);
+		this.receiver.subscribe(Homework2Event.PLAYER_DEAD);
+		this.receiver.subscribe(Homework2Event.SPAWN_FLEET);
+		this.receiver.subscribe(Homework2Event.SHIP_DEAD);
 	}
 
 	/*
@@ -230,8 +230,8 @@ export default class Homework1_Scene extends Scene {
 	initializeObjectPools(): void {
 		// Initialize the fleet object pool
 		for(let i = 0; i < this.fleet.length; i++){
-			this.fleet[i] = this.add.animatedSprite(Homework1Names.FLEET_SHIP, "primary");
-			this.fleet[i].animation.play(Homework1Animations.SHIP_IDLE);
+			this.fleet[i] = this.add.animatedSprite(Homework2Names.FLEET_SHIP, "primary");
+			this.fleet[i].animation.play(Homework2Animations.SHIP_IDLE);
 			this.fleet[i].scale.set(0.3, 0.3);
 			this.fleet[i].visible = false;
 
@@ -256,7 +256,7 @@ export default class Homework1_Scene extends Scene {
 		for(let i = 0; i < this.asteroids.length; i++){
 			this.asteroids[i] = this.add.graphic(GraphicType.RECT, "primary", {position: new Vec2(0, 0), size: new Vec2(100, 100)});
 			// Use our custom shader for the asteroids
-			this.asteroids[i].useCustomShader(Homework1Shaders.GRADIENT_CIRCLE);
+			this.asteroids[i].useCustomShader(Homework2Shaders.GRADIENT_CIRCLE);
 
 			// Make our asteroids inactive by default
 			this.asteroids[i].visible = false;
@@ -339,19 +339,19 @@ export default class Homework1_Scene extends Scene {
 		while(this.receiver.hasNextEvent()){
 			let event = this.receiver.getNextEvent();
 
-			if(event.type === Homework1Event.PLAYER_I_FRAMES_END){
+			if(event.type === Homework2Event.PLAYER_I_FRAMES_END){
 				this.playerinvincible = false;
 			}
 
-			if(event.type === Homework1Event.PLAYER_DEAD){
+			if(event.type === Homework2Event.PLAYER_DEAD){
 				this.playerDead = true;
 			}
 
-			if(event.type === Homework1Event.SPAWN_FLEET){
+			if(event.type === Homework2Event.SPAWN_FLEET){
 				this.spawnShip(event.data.get("position"));
 			}
 
-			if(event.type === Homework1Event.SHIP_DEAD){
+			if(event.type === Homework2Event.SHIP_DEAD){
 				// Fleet member died, hide them
 				this.fleetSize -= 1;
 				event.data.get("owner").visible = false;
@@ -389,7 +389,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * Handles all collisions.
 	 * Collisions only occur between:
@@ -455,7 +455,7 @@ export default class Homework1_Scene extends Scene {
 						this.asteroidsLabel.text = `Asteroids: ${this.numAsteroids}`;
 
 						// Send out an event to destroy the ship
-						this.emitter.fireEvent(Homework1Event.SHIP_DAMAGE, {id: ship.id});
+						this.emitter.fireEvent(Homework2Event.SHIP_DAMAGE, {id: ship.id});
 
 						// Exit early - we only need to destroy one ship
 						break;
@@ -480,7 +480,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * This function spawns a new asteroid from our object pool.
 	 * 
@@ -526,7 +526,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * This function takes in a GameNode that may be out of bounds of the viewport and
 	 * modifies its position so that it wraps around the viewport from one side to the other.
@@ -572,7 +572,7 @@ export default class Homework1_Scene extends Scene {
 
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * This method checks whether or not an AABB collision shape and a Circle collision shape
 	 * overlap with each other.

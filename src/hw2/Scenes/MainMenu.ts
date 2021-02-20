@@ -3,8 +3,8 @@ import { UIElementType } from "../../Wolfie2D/Nodes/UIElements/UIElementTypes";
 import Layer from "../../Wolfie2D/Scene/Layer";
 import Scene from "../../Wolfie2D/Scene/Scene";
 import Color from "../../Wolfie2D/Utils/Color";
-import { Homework1Event } from "../HW1_Enums";
-import Homework1_Scene from "./HW1_Scene";
+import { Homework2Event } from "../HW2_Enums";
+import Homework1_Scene from "./HW2_Scene";
 import Label from "../../Wolfie2D/Nodes/UIElements/Label";
 
 export default class MainMenu extends Scene {
@@ -27,7 +27,7 @@ export default class MainMenu extends Scene {
         play.borderWidth = 2;
         play.borderColor = Color.WHITE;
         play.backgroundColor = Color.TRANSPARENT;
-        play.onClickEventId = Homework1Event.PLAY_GAME;
+        play.onClickEventId = Homework2Event.PLAY_GAME;
 
         // Add controls button
         const controls = this.add.uiElement(UIElementType.BUTTON, "mainMenu", {position: new Vec2(center.x, center.y), text: "Controls"});
@@ -35,7 +35,7 @@ export default class MainMenu extends Scene {
         controls.borderWidth = 2;
         controls.borderColor = Color.WHITE;
         controls.backgroundColor = Color.TRANSPARENT;
-        controls.onClickEventId = Homework1Event.CONTROLS;
+        controls.onClickEventId = Homework2Event.CONTROLS;
 
         // Add event button
         const about = this.add.uiElement(UIElementType.BUTTON, "mainMenu", {position: new Vec2(center.x, center.y + 100), text: "About"});
@@ -43,7 +43,7 @@ export default class MainMenu extends Scene {
         about.borderWidth = 2;
         about.borderColor = Color.WHITE;
         about.backgroundColor = Color.TRANSPARENT;
-        about.onClickEventId = Homework1Event.ABOUT;
+        about.onClickEventId = Homework2Event.ABOUT;
 
         // Controls screen
         this.controls = this.addUILayer("controls");
@@ -61,7 +61,7 @@ export default class MainMenu extends Scene {
         back.borderWidth = 2;
         back.borderColor = Color.WHITE;
         back.backgroundColor = Color.TRANSPARENT;
-        back.onClickEventId = Homework1Event.MENU;
+        back.onClickEventId = Homework2Event.MENU;
 
         // About screen
         this.about = this.addUILayer("about");
@@ -87,13 +87,13 @@ export default class MainMenu extends Scene {
         aboutBack.borderWidth = 2;
         aboutBack.borderColor = Color.WHITE;
         aboutBack.backgroundColor = Color.TRANSPARENT;
-        aboutBack.onClickEventId = Homework1Event.MENU;
+        aboutBack.onClickEventId = Homework2Event.MENU;
 
         // Subscribe to the button events
-        this.receiver.subscribe(Homework1Event.PLAY_GAME);
-        this.receiver.subscribe(Homework1Event.CONTROLS);
-        this.receiver.subscribe(Homework1Event.ABOUT);
-        this.receiver.subscribe(Homework1Event.MENU)
+        this.receiver.subscribe(Homework2Event.PLAY_GAME);
+        this.receiver.subscribe(Homework2Event.CONTROLS);
+        this.receiver.subscribe(Homework2Event.ABOUT);
+        this.receiver.subscribe(Homework2Event.MENU)
     }
 
     updateScene(){
@@ -102,21 +102,21 @@ export default class MainMenu extends Scene {
 
             console.log(event);
 
-            if(event.type === Homework1Event.PLAY_GAME){
+            if(event.type === Homework2Event.PLAY_GAME){
                 this.sceneManager.changeScene(Homework1_Scene, {});
             }
 
-            if(event.type === Homework1Event.CONTROLS){
+            if(event.type === Homework2Event.CONTROLS){
                 this.controls.setHidden(false);
                 this.mainMenu.setHidden(true);
             }
 
-            if(event.type === Homework1Event.ABOUT){
+            if(event.type === Homework2Event.ABOUT){
                 this.about.setHidden(false);
                 this.mainMenu.setHidden(true);
             }
 
-            if(event.type === Homework1Event.MENU){
+            if(event.type === Homework2Event.MENU){
                 this.mainMenu.setHidden(false);
                 this.controls.setHidden(true);
                 this.about.setHidden(true);

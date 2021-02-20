@@ -5,7 +5,7 @@ import GameEvent from "../../Wolfie2D/Events/GameEvent";
 import Receiver from "../../Wolfie2D/Events/Receiver";
 import AnimatedSprite from "../../Wolfie2D/Nodes/Sprites/AnimatedSprite";
 import MathUtils from "../../Wolfie2D/Utils/MathUtils";
-import { Homework1Event, Homework1Animations } from "../HW1_Enums";
+import { Homework2Event, Homework2Animations } from "../HW2_Enums";
 import FlockBehavior from "./FlockBehavior";
 
 export default class BoidBehavior implements AI {
@@ -45,7 +45,7 @@ export default class BoidBehavior implements AI {
         
         this.receiver = new Receiver();
 
-        this.receiver.subscribe(Homework1Event.SHIP_DAMAGE);
+        this.receiver.subscribe(Homework2Event.SHIP_DAMAGE);
     }
 
     activate(options: Record<string, any>): void {}
@@ -53,9 +53,9 @@ export default class BoidBehavior implements AI {
 
     handleEvent(event: GameEvent): void {
         // If a ship was damaged, and that ship was us, explode
-        if(event.type === Homework1Event.SHIP_DAMAGE && event.data.get("id") === this.owner.id) {
+        if(event.type === Homework2Event.SHIP_DAMAGE && event.data.get("id") === this.owner.id) {
             // Play death animation, send an event on completion
-            this.owner.animation.play(Homework1Animations.SHIP_DIE, false, Homework1Event.SHIP_DEAD);
+            this.owner.animation.play(Homework2Animations.SHIP_DIE, false, Homework2Event.SHIP_DEAD);
         }
     }
 
@@ -65,13 +65,13 @@ export default class BoidBehavior implements AI {
         }
 
         // Don't update if we're dead
-        if(!this.owner.visible || this.owner.animation.isPlaying(Homework1Animations.SHIP_DIE)) return;
+        if(!this.owner.visible || this.owner.animation.isPlaying(Homework2Animations.SHIP_DIE)) return;
 
         let direction = Vec2.UP.rotateCCW(this.owner.rotation);
 
         if(this.velocity.x === 0 && this.velocity.y === 0){
             this.velocity = direction.scaled(BoidBehavior.START_SPEED);
-            this.owner.animation.play(Homework1Animations.SHIP_BOOST, true);
+            this.owner.animation.play(Homework2Animations.SHIP_BOOST, true);
         }
 
         // Only update as boid if it has neighbors

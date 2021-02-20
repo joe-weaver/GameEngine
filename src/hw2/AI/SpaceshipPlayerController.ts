@@ -7,7 +7,7 @@ import Receiver from "../../Wolfie2D/Events/Receiver";
 import Input from "../../Wolfie2D/Input/Input";
 import AnimatedSprite from "../../Wolfie2D/Nodes/Sprites/AnimatedSprite";
 import MathUtils from "../../Wolfie2D/Utils/MathUtils";
-import { Homework1Event } from "../HW1_Enums";
+import { Homework2Event } from "../HW2_Enums";
 
 export default class SpaceshipPlayerController implements AI {
 	// We want to be able to control our owner, so keep track of them
@@ -27,7 +27,7 @@ export default class SpaceshipPlayerController implements AI {
 	private receiver: Receiver;
 	private emitter: Emitter;
 
-	// Homework 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * This method initializes all variables inside of this AI class, and sets
 	 * up anything we need it do.
@@ -55,14 +55,14 @@ export default class SpaceshipPlayerController implements AI {
 
 	handleEvent(event: GameEvent): void {
 		// We need to handle animations when we get hurt
-		if(event.type === Homework1Event.PLAYER_DAMAGE){
+		if(event.type === Homework2Event.PLAYER_DAMAGE){
 			if(event.data.get("shield") === 0){
 				// Play animation and queue event to end game
-				this.owner.animation.play("explode", false, Homework1Event.PLAYER_DEAD);
+				this.owner.animation.play("explode", false, Homework2Event.PLAYER_DEAD);
 				this.owner.animation.queue("dead", true);
 				this.isDead = true;
 			} else {
-				this.owner.animation.play("shield", false, Homework1Event.PLAYER_I_FRAMES_END);
+				this.owner.animation.play("shield", false, Homework2Event.PLAYER_I_FRAMES_END);
 			}
 		}
 	}
@@ -96,7 +96,7 @@ export default class SpaceshipPlayerController implements AI {
 	
 		// If the player clicked, we need to spawn in a fleet member
 		if(Input.isMouseJustPressed()){
-			this.emitter.fireEvent(Homework1Event.SPAWN_FLEET, {position: Input.getGlobalMousePosition()});
+			this.emitter.fireEvent(Homework2Event.SPAWN_FLEET, {position: Input.getGlobalMousePosition()});
 		}
 
 		// Animations

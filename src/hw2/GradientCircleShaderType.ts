@@ -14,7 +14,7 @@ export default class GradientCircleShaderType extends RectShaderType {
 		this.resourceManager.createBuffer(this.bufferObjectKey);
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * You should modify this method to allow you to change the color of the GradientCircles
 	 * 
@@ -77,7 +77,7 @@ export default class GradientCircleShaderType extends RectShaderType {
 		gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 	}
 
-	// HOMEWORK 1 - TODO
+	// HOMEWORK 2 - TODO
 	/**
 	 * This method decides what options get passed to the above render() method.
 	 * You should modify this class to allow you to change the color of the GradientCircles

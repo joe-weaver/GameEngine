@@ -1,12 +1,12 @@
 import Game from "./Wolfie2D/Loop/Game";
 import Registry from "./Wolfie2D/Registry/Registry";
-import { Homework1Shaders } from "./hw1/HW1_Enums";
-import GradientCircleShaderType from "./hw1/GradientCircleShaderType";
-import MainMenu from "./hw1/Scenes/MainMenu";
+import { Homework2Shaders } from "./hw2/HW2_Enums";
+import GradientCircleShaderType from "./hw2/GradientCircleShaderType";
+import MainMenu from "./hw2/Scenes/MainMenu";
 import AABB from "./Wolfie2D/DataTypes/Shapes/AABB";
 import Vec2 from "./Wolfie2D/DataTypes/Vec2";
 import Circle from "./Wolfie2D/DataTypes/Shapes/Circle";
-import Homework1_Scene from "./hw1/Scenes/HW1_Scene";
+import Homework2_Scene from "./hw2/Scenes/HW2_Scene";
 
 // The main function is your entrypoint into Wolfie2D. Specify your first scene and any options here.
 (function main(){
@@ -33,7 +33,7 @@ import Homework1_Scene from "./hw1/Scenes/HW1_Scene";
     // the class constructor. Here, we additionally make sure to preload the data so our
     // shader is available throughout the application
     Registry.shaders.registerAndPreloadItem(
-        Homework1Shaders.GRADIENT_CIRCLE,   // The key of the shader program
+        Homework2Shaders.GRADIENT_CIRCLE,   // The key of the shader program
         GradientCircleShaderType,           // The constructor of the shader program
         "hw1_assets/shaders/gradient_circle.vshader",   // The path to the vertex shader
         "hw1_assets/shaders/gradient_circle.fshader");  // the path to the fragment shader
@@ -100,7 +100,7 @@ function runTests(){
 
 function HW1_CollisionTest(aabb: AABB, circle: Circle, value: boolean, message: string){
     console.assert(
-        Homework1_Scene.checkAABBtoCircleCollision(aabb, circle) === value,
+        Homework2_Scene.checkAABBtoCircleCollision(aabb, circle) === value,
         {
             aabb: aabb.toString(),
             circle: circle.toString(),
