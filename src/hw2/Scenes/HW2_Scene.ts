@@ -77,10 +77,10 @@ export default class Homework1_Scene extends Scene {
 	loadScene(){
 		/* ##### DO NOT MODIFY ##### */
 		// Load in the player spaceship spritesheet
-		this.load.spritesheet("player", "hw1_assets/spritesheets/player_spaceship.json");
+		this.load.spritesheet("player", "hw2_assets/spritesheets/player_spaceship.json");
 
 		// Load in the background image
-		this.load.image("space", "hw1_assets/sprites/space.png");
+		this.load.image("space", "hw2_assets/sprites/space.png");
 
 		/* ##### YOUR CODE GOES BELOW THIS LINE ##### */
 	}
@@ -586,12 +586,6 @@ export default class Homework1_Scene extends Scene {
 	 * will find a way to do so.
 	 * 
 	 * You can test this method independently by writing some code in main.ts.
-	 * Create some shapes, and call this method on them:
-	 * 
-	 * let aabb = new AABB(Vec2.ZERO, new Vec2(5, 5));
-	 * let circle = new Circle(new Vec2(7, 7), 2);
-	 * 
-	 * console.log(HW1_Scene.checkAABBtoCircleCollision(aabb, circle) + " == " + false);
 	 * 
 	 * Although it talks about AABB collisions exclusively, you may find this resource helpful:
 	 * https://noonat.github.io/intersect/
