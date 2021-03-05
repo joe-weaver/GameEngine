@@ -1,0 +1,31 @@
+{
+    "items": [
+        {
+            "type": "healthpack",
+            "position": [440, 760]
+        },
+        {
+            "type": "healthpack",
+            "position": [472, 760]
+        },
+        {
+            "type": "healthpack",
+            "position": [262, 151]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [200, 967]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [180, 615]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [312, 263]
+        }
+    ]
+}
