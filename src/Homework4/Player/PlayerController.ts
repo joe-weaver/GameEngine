@@ -40,7 +40,22 @@ export default class PlayerController extends StateMachineAI {
         this.initializePlatformer();
 
         this.tilemap = this.owner.getScene().getTilemap(options.tilemap) as OrthogonalTilemap;
+
+        // HOMEWORK 4 - TODO
+        /*
+            Use this coin sprite to perform an animation when the player hits a coin block.
+
+            The coin should move up from the block and fade out of view.
+
+            Additionally, you should edit the PlayerController and its states so that
+            when you collide with a coin block on the tilemap, it will perform this animation
+            and let the scene know that the player collided with a coin block.
+
+            The coin block that the player collides with should then be set to be a dark coin block.
+            Look at the tileset image for reference.
+        */
         this.coin = this.owner.getScene().add.sprite("coin", "coinLayer");
+        this.coin.position.set(-100, -100);
         this.coin.scale.set(2, 2);
     }
 

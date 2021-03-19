@@ -28,7 +28,7 @@ export default class OnGround extends PlayerState {
 				this.owner.tweens.play("flip");
 			}
 		} else if(!this.owner.onGround){
-			this.finished("jump");
+			this.finished("fall");
 		}
 	}
 

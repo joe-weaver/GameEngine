@@ -4,13 +4,34 @@ import GameLevel from "./GameLevel";
 import Level2 from "./Level2";
 
 export default class Level1 extends GameLevel {
+    
     loadScene(): void {
+        // Load resources
         this.load.image("background", "hw4_assets/sprites/2bitbackground.png");
         this.load.image("coin", "hw4_assets/sprites/coin.png");
         this.load.tilemap("level1", "hw4_assets/tilemaps/level1.json");
         this.load.spritesheet("player", "hw4_assets/spritesheets/platformPlayer.json");
         this.load.spritesheet("hopper", "hw4_assets/spritesheets/hopper.json");
         this.load.spritesheet("bunny", "hw4_assets/spritesheets/ghostBunny.json");
+        this.load.audio("jump", "hw4_assets/sounds/jump.wav");
+        this.load.audio("coin", "hw4_assets/sounds/coin.wav");
+        this.load.audio("player_death", "hw4_assets/sounds/player_death.wav");
+    }
+
+    // HOMEWORK 4 - TODO
+    /**
+     * Decide which resource to keep and which to cull.
+     * 
+     * Check out the resource manager class.
+     * 
+     * Figure out how to save resources from being unloaded, and save the ones that are needed
+     * for level 2.
+     * 
+     * This will let us cut down on load time for the game (although there is admittedly
+     * not a lot of load time for such a small project).
+     */
+    unloadScene(){
+        // Keep resources - this is up to you
     }
 
     startScene(): void {

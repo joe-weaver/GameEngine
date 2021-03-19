@@ -14,6 +14,21 @@ export enum EnemyStates {
 	PREVIOUS = "previous"
 }
 
+// HOMEWORK 4 - TODO
+/**
+ * For this homework, you'll have to implement an additional state to the AI from scratch,
+ * and handle how it's used in the EnemyController and accessed from other states.
+ * 
+ * This new behavior should be for a spike ball enemy variant, and it should activate when
+ * the player moves too close to the enemy.
+ * 
+ * The spike ball enemy should jump up and down constantly for as long as the player is nearby.
+ * 
+ * When the player moves far enough away again, the enemy should return to the idle state.
+ * 
+ * You have been provided with a spritesheet for the spikeball enemy, which comes with some
+ * needed animation states. Feel free to change the sprite (or any of the art) if you want to.
+ */
 export default class EnemyController extends StateMachineAI {
 	owner: GameNode;
 	jumpy: boolean;
